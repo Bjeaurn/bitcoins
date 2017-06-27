@@ -1,18 +1,18 @@
+import {Routes, RouterModule} from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
 import { AppComponent } from './app.component'
-import { RouterModule, Routes } from '@angular/router'
-import { SharedModule } from './shared/shared.module'
-import { HttpClient } from './shared/http.client'
 import { BaseModule } from './base/base.module'
+import { HttpClient } from './shared/http.client'
+import { PageNotFoundComponent } from './shared/pagenotfound.component'
+import { SharedModule } from './shared/shared.module'
 
-import { ModuleModule } from './module/module.module'
-
-import { PageNotFoundComponent } from "./shared/pagenotfound.component"
+import { BtcModule } from './btc/btc.module'
 
 const appRoutes: Routes = [
+  { path: '', redirectTo: 'btc', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ]
 
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     HttpModule,
     SharedModule,
     BaseModule,
-    ModuleModule,
+    BtcModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
